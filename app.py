@@ -47,10 +47,10 @@ Figs4 = ['ALL','Male', 'Female',
         ]
 
 Figs5 = ['ALL 2',
-         'Zone 1', 'Zone 1 Age 15-19', 'Zone 1 Age 20-29','Zone 1 Age 30-59','Zone 1 Age 60+',
-         'Zone 2', 'Zone 2 Age 15-19', 'Zone 2 Age 20-29','Zone 2 Age 30-59','Zone 2 Age 60+',
-         'Zone 3', 'Zone 3 Age 15-19', 'Zone 3 Age 20-29','Zone 3 Age 30-59','Zone 3 Age 60+',
-         'Zone 4', 'Zone 4 Age 15-19', 'Zone 4 Age 20-29','Zone 4 Age 30-59','Zone 4 Age 60+'
+         'Zone 1', 'Zone 1 Male', 'Zone 1 Female', 'Zone 1 Age 15-19', 'Zone 1 Age 20-29','Zone 1 Age 30-59','Zone 1 Age 60+',
+         'Zone 2', 'Zone 2 Male', 'Zone 2 Female', 'Zone 2 Age 15-19', 'Zone 2 Age 20-29','Zone 2 Age 30-59','Zone 2 Age 60+',
+         'Zone 3', 'Zone 3 Male', 'Zone 3 Female', 'Zone 3 Age 15-19', 'Zone 3 Age 20-29','Zone 3 Age 30-59','Zone 3 Age 60+',
+         'Zone 4', 'Zone 4 Male', 'Zone 4 Female', 'Zone 4 Age 15-19', 'Zone 4 Age 20-29','Zone 4 Age 30-59','Zone 4 Age 60+'
         ]
 
 dfW = dfW[Figs]
@@ -95,31 +95,55 @@ windex = {
 
 # Translated columns
 for name, df in windex.items():
-    df['Category (EN)'] = df['Category']
+    df['Category (EN)'] = df['Category'].map({
+            'ALL': 'All',
+            'Male': 'Male','Female': 'Female',
+            'Age 15-19': 'Age 15-19','Age 20-29': 'Age 20-29','Age 30-59': 'Age 30-59','Age 60+': 'Age 60+',
+            'Male(15-19)': 'Male(15-19)','Male(20-29)': 'Male(20-29)',
+            'Male(30-59)': 'Male(30-59)','Male(60+)': 'Male(60+)',
+            'Female(15-19)': 'Female(15-19)','Female(20-29)': 'Female(20-29)',
+            'Female(30-59)': 'Female(30-59)','Female(60+)': 'Female(60+)',
+            'Zone 1': 'Northwest',
+            'Zone 1 Male': 'Northwest Male','Zone 1 Female': 'Northwest Female',
+            'Zone 1 Age 15-19': 'Northwest Age 15-19','Zone 1 Age 20-29': 'Northwest Age 20-29',
+            'Zone 1 Age 30-59': 'Northwest Age 30-59','Zone 1 Age 60+': 'Northwest Age 60+',
+            'Zone 2': 'Northeast',
+            'Zone 2 Male': 'Northeast Male','Zone 2 Female': 'Northeast Female',
+            'Zone 2 Age 15-19': 'Northeast Age 15-19','Zone 2 Age 20-29': 'Northeast Age 20-29',
+            'Zone 2 Age 30-59': 'Northeast Age 30-59','Zone 2 Age 60+': 'Northeast Age 60+',
+            'Zone 3': 'Southwest',
+            'Zone 3 Male': 'Southwest Male','Zone 3 Female': 'Southwest Female',
+            'Zone 3 Age 15-19': 'Southwest Age 15-19','Zone 3 Age 20-29': 'Southwest Age 20-29',
+            'Zone 3 Age 30-59': 'Southwest Age 30-59','Zone 3 Age 60+': 'Southwest Age 60+',
+            'Zone 4': 'Southeast',
+            'Zone 4 Male': 'Southeast Male','Zone 4 Female': 'Southeast Female',
+            'Zone 4 Age 15-19': 'Southeast Age 15-19','Zone 4 Age 20-29': 'Southeast Age 20-29',
+            'Zone 4 Age 30-59': 'Southeast Age 30-59','Zone 4 Age 60+': 'Southeast Age 60+'
+    })
     df['Category (ES)'] = df['Category'].map({
-            'ALL':'TODO',
+            'ALL':'Todo',
             'Male': 'Hombre','Female': 'Mujer',
             'Age 15-19': 'Edad 15-19','Age 20-29': 'Edad 20-29','Age 30-59': 'Edad 30-59','Age 60+': 'Edad 60+',
             'Male(15-19)': 'Hombre(15-19)','Male(20-29)': 'Hombre(20-29)',
             'Male(30-59)': 'Hombre(30-59)','Male(60+)': 'Hombre(60+)',
             'Female(15-19)': 'Mujer(15-19)','Female(20-29)': 'Mujer(20-29)',
             'Female(30-59)': 'Mujer(30-59)','Female(60+)': 'Mujer(60+)',
-            'Zone 1': 'Zona 1',
-            'Zone 1 Male': 'Zona 1 Hombre','Zone 1 Female': 'Zona 1 Mujer',
-            'Zone 1 Age 15-19': 'Zona 1 Edad 15-19','Zone 1 Age 20-29': 'Zona 1 Edad 20-29',
-            'Zone 1 Age 30-59': 'Zona 1 Edad 30-59','Zone 1 Age 60+': 'Zona 1 Edad 60+',
-            'Zone 2': 'Zona 2',
-            'Zone 2 Male': 'Zona 2 Hombre','Zone 2 Female': 'Zona 2 Mujer',
-            'Zone 2 Age 15-19': 'Zona 2 Edad 15-19','Zone 2 Age 20-29': 'Zona 2 Edad 20-29',
-            'Zone 2 Age 30-59': 'Zona 2 Edad 30-59','Zone 2 Age 60+': 'Zona 2 Edad 60+',
-            'Zone 3': 'Zona 3',
-            'Zone 3 Male': 'Zona 3 Hombre','Zone 3 Female': 'Zona 3 Mujer',
-            'Zone 3 Age 15-19': 'Zona 3 Edad 15-19','Zone 3 Age 20-29': 'Zona 3 Edad 20-29',
-            'Zone 3 Age 30-59': 'Zona 3 Edad 30-59','Zone 3 Age 60+': 'Zona 3 Edad 60+',
-            'Zone 4': 'Zona 4',
-            'Zone 4 Male': 'Zona 4 Hombre','Zone 4 Female': 'Zona 4 Mujer',
-            'Zone 4 Age 15-19': 'Zona 4 Edad 15-19','Zone 4 Age 20-29': 'Zona 4 Edad 20-29',
-            'Zone 4 Age 30-59': 'Zona 4 Edad 30-59','Zone 4 Age 60+': 'Zona 4 Edad 60+'
+            'Zone 1': 'Norponiente',
+            'Zone 1 Male': 'Norponiente Hombre','Zone 1 Female': 'Norponiente Mujer',
+            'Zone 1 Age 15-19': 'Norponiente Edad 15-19','Zone 1 Age 20-29': 'Norponiente Edad 20-29',
+            'Zone 1 Age 30-59': 'Norponiente Edad 30-59','Zone 1 Age 60+': 'Norponiente Edad 60+',
+            'Zone 2': 'Nororiente',
+            'Zone 2 Male': 'Nororiente Hombre','Zone 2 Female': 'Nororiente Mujer',
+            'Zone 2 Age 15-19': 'Nororiente Edad 15-19','Zone 2 Age 20-29': 'Nororiente Edad 20-29',
+            'Zone 2 Age 30-59': 'Nororiente Edad 30-59','Zone 2 Age 60+': 'Nororiente Edad 60+',
+            'Zone 3': 'Surponiente',
+            'Zone 3 Male': 'Surponiente Hombre','Zone 3 Female': 'Surponiente Mujer',
+            'Zone 3 Age 15-19': 'Surponiente Edad 15-19','Zone 3 Age 20-29': 'Surponiente Edad 20-29',
+            'Zone 3 Age 30-59': 'Surponiente Edad 30-59','Zone 3 Age 60+': 'Surponiente Edad 60+',
+            'Zone 4': 'Suroriente',
+            'Zone 4 Male': 'Suroriente Hombre','Zone 4 Female': 'Suroriente Mujer',
+            'Zone 4 Age 15-19': 'Suroriente Edad 15-19','Zone 4 Age 20-29': 'Suroriente Edad 20-29',
+            'Zone 4 Age 30-59': 'Suroriente Edad 30-59','Zone 4 Age 60+': 'Suroriente Edad 60+'
     })
     
     # Levels of Human Insecurity Intensity Measured by the Index
@@ -129,14 +153,14 @@ for name, df in windex.items():
     })
     
     df['VI_desc (EN)'] = df['VI (EN)'].map({
-        'Severe': 'Vulnerability across all four priority dimensions.',
+        'Severe': 'Vulnerability in the majority of dimensions, equivalent to having all priority dimensions affected.',
         'Substantial': 'Vulnerability in up to seven dimensions, but no more than three priority dimensions.',
         'Moderate': 'Up to six vulnerable dimensions, with no more than two of them being priority dimensions.',
         'Mild': 'No vulnerable priority dimensions and no more than one affected complementary dimension.'
     })
     
     df['VI_desc (ES)'] = df['VI (EN)'].map({
-        'Severe': 'Vulnerabilidad en las cuatro dimensiones prioritarias.',
+        'Severe': 'Vulnerabilidad en la mayoría de las dimensiones, que equivale a tener afectadas todas las dimensiones prioritarias.',
         'Substantial': 'Hasta siete dimensiones vulneradas, pero no más de tres de ellas son prioritarias.',
         'Moderate': 'Hasta seis dimensiones vulneradas, pero entre ellas no más de dos pueden ser prioritarias.',
         'Mild': 'No hay dimensiónes prioritarias vulneradas y como máximo una dimensión complementaria afectada.'
